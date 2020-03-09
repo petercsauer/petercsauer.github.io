@@ -8372,7 +8372,7 @@ h1, h2, h3, h4, h5,
     position: absolute;
     top: 50%;
     left: -12px;
-    width: 40px;
+    width: 200px;
     height: 40px;
     content: '';
     background: #3e64ff;
@@ -8380,10 +8380,10 @@ h1, h2, h3, h4, h5,
     -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    -ms-border-radius: 50%;
-    border-radius: 50%; }
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    border-radius: 30px }
   .navbar-brand span {
     color: #fff; }
 
