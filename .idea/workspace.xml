@@ -1,9 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="7b4573fc-7887-474b-af63-5be69e65c906" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="7b4573fc-7887-474b-af63-5be69e65c906" name="Default Changelist" comment="Added some content">
+      <change afterPath="$PROJECT_DIR$/css/fontawesome.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -15,18 +34,22 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1Yriapai7gnL1YaIFJBENQfQzX5" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -41,22 +64,54 @@
       <option name="presentableId" value="Default" />
       <updated>1583707180066</updated>
       <workItem from="1583707184720" duration="6206000" />
-      <workItem from="1599744640096" duration="2135000" />
+      <workItem from="1599744640096" duration="3021000" />
+      <workItem from="1599940342278" duration="2697000" />
     </task>
+    <task id="LOCAL-00001" summary="Added some content">
+      <created>1599746785190</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1599746785190</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <ignored-roots>
       <path value="$PROJECT_DIR$/petercsauer.github.io" />
     </ignored-roots>
+    <MESSAGE value="Added some content" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added some content" />
   </component>
   <component name="WindowStateProjectService">
     <state x="573" y="307" width="773" height="562" key="SettingsEditor" timestamp="1599744696748">
       <screen x="0" y="23" width="1920" height="1123" />
     </state>
     <state x="573" y="307" width="773" height="562" key="SettingsEditor/0.23.1920.1123@0.23.1920.1123" timestamp="1599744696748" />
+    <state x="655" y="382" width="600" height="412" key="Vcs.Push.Dialog.v2" timestamp="1599746811063">
+      <screen x="0" y="23" width="1920" height="1123" />
+    </state>
+    <state x="655" y="382" width="600" height="412" key="Vcs.Push.Dialog.v2/0.23.1920.1123@0.23.1920.1123" timestamp="1599746811063" />
+    <state x="782" y="513" width="345" height="149" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1599746803625">
+      <screen x="0" y="23" width="1920" height="1123" />
+    </state>
+    <state x="782" y="513" width="345" height="149" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1920.1123@0.23.1920.1123" timestamp="1599746803625" />
   </component>
 </project>
