@@ -9675,5 +9675,5 @@ textarea.form-control {
 
 i.fas,
 i.fab {
-  color: white;
+  !important color: white;
 }
