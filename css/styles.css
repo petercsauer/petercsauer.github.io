@@ -9673,7 +9673,6 @@ textarea.form-control {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -136px; } }
 
-i.fas,
-i.fab {
+.fas {
   !important color: white;
 }
