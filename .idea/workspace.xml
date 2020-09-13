@@ -20,10 +20,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7b4573fc-7887-474b-af63-5be69e65c906" name="Default Changelist" comment="Added some content">
-      <change afterPath="$PROJECT_DIR$/css/fontawesome.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BadgerBoatFinalReport.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boat.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cyclone.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/i2r.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/boat_cad.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/cyclone_screen.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ftc.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/i2-robotics-team.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/robotee.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/single.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +60,11 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
@@ -65,7 +78,7 @@
       <updated>1583707180066</updated>
       <workItem from="1583707184720" duration="6206000" />
       <workItem from="1599744640096" duration="3021000" />
-      <workItem from="1599940342278" duration="2697000" />
+      <workItem from="1599940342278" duration="9313000" />
     </task>
     <task id="LOCAL-00001" summary="Added some content">
       <created>1599746785190</created>
@@ -109,9 +122,10 @@
       <screen x="0" y="23" width="1920" height="1123" />
     </state>
     <state x="655" y="382" width="600" height="412" key="Vcs.Push.Dialog.v2/0.23.1920.1123@0.23.1920.1123" timestamp="1599746811063" />
-    <state x="782" y="513" width="345" height="149" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1599746803625">
-      <screen x="0" y="23" width="1920" height="1123" />
+    <state x="782" y="517" width="345" height="149" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1600010161054">
+      <screen x="0" y="23" width="1920" height="1133" />
     </state>
     <state x="782" y="513" width="345" height="149" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1920.1123@0.23.1920.1123" timestamp="1599746803625" />
+    <state x="782" y="517" width="345" height="149" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1920.1133@0.23.1920.1133" timestamp="1600010161054" />
   </component>
 </project>
