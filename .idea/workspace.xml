@@ -20,7 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7b4573fc-7887-474b-af63-5be69e65c906" name="Default Changelist" comment="Added some content">
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sawyer_connect4.html" beforeDir="false" afterPath="$PROJECT_DIR$/sawyer_connect4.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +69,7 @@
       <workItem from="1599744640096" duration="3021000" />
       <workItem from="1599940342278" duration="9556000" />
       <workItem from="1600015787116" duration="2184000" />
-      <workItem from="1605653824801" duration="1065000" />
+      <workItem from="1605653824801" duration="1158000" />
     </task>
     <task id="LOCAL-00001" summary="Added some content">
       <created>1599746785190</created>
