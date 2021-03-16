@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7b4573fc-7887-474b-af63-5be69e65c906" name="Default Changelist" comment="No Video">
-      <change afterPath="$PROJECT_DIR$/controller.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/FullAssembly.jpg" afterDir="false" />
+    <list default="true" id="7b4573fc-7887-474b-af63-5be69e65c906" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +64,7 @@
       <workItem from="1587495271312" duration="544000" />
       <workItem from="1592251908684" duration="107000" />
       <workItem from="1615853035207" duration="125000" />
-      <workItem from="1615853176128" duration="568000" />
+      <workItem from="1615853176128" duration="685000" />
     </task>
     <task id="LOCAL-00001" summary="No Video">
       <created>1583772971379</created>
@@ -95,7 +94,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585765001507</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Added controller page">
+      <created>1615853764628</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1615853764628</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -104,27 +110,18 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <MESSAGE value="No Video" />
-    <option name="LAST_COMMIT_MESSAGE" value="No Video" />
+    <MESSAGE value="Added controller page" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added controller page" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="772" y="333" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1583727488158">
-      <screen x="0" y="23" width="1792" height="1041" />
+    <state x="485" y="124" key="CommitChangelistDialog2" timestamp="1615853764181">
+      <screen x="0" y="25" width="1792" height="1044" />
     </state>
-    <state x="772" y="333" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1792.1041@0.23.1792.1041" timestamp="1583727488158" />
-    <state x="615" y="441" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1585764947578">
-      <screen x="0" y="23" width="1792" height="1043" />
+    <state x="485" y="124" key="CommitChangelistDialog2/0.25.1792.1044@0.25.1792.1044" timestamp="1615853764181" />
+    <state x="496" y="262" key="Vcs.Push.Dialog.v2" timestamp="1615853767016">
+      <screen x="0" y="25" width="1792" height="1044" />
     </state>
-    <state x="615" y="441" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1792.1043@0.23.1792.1043" timestamp="1585764947578" />
-    <state x="643" y="125" key="CommitChangelistDialog2" timestamp="1585765548024">
-      <screen x="0" y="23" width="1792" height="1043" />
-    </state>
-    <state x="643" y="125" key="CommitChangelistDialog2/0.23.1792.1041@0.23.1792.1041" timestamp="1583798107127" />
-    <state x="643" y="125" key="CommitChangelistDialog2/0.23.1792.1043@0.23.1792.1043" timestamp="1585765548024" />
-    <state x="660" y="263" key="Vcs.Push.Dialog.v2" timestamp="1585765007620">
-      <screen x="0" y="23" width="1792" height="1043" />
-    </state>
-    <state x="660" y="263" key="Vcs.Push.Dialog.v2/0.23.1792.1041@0.23.1792.1041" timestamp="1583797221836" />
-    <state x="660" y="263" key="Vcs.Push.Dialog.v2/0.23.1792.1043@0.23.1792.1043" timestamp="1585765007620" />
+    <state x="496" y="262" key="Vcs.Push.Dialog.v2/0.25.1792.1044@0.25.1792.1044" timestamp="1615853767016" />
   </component>
 </project>
