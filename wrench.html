@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Wrench Manufacturing Automation</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <link rel="stylesheet" href="css/aos.css">
+
+    <link rel="stylesheet" href="css/ionicons.min.css">
+    
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+	  
+	  
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light site-navbar-target" id="ftco-navbar">
+	    <div class="container">
+	      <a class="navbar-brand" href="index.html"><span>Peter Sauer</span></a>
+	      <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="oi oi-menu"></span> Menu
+	      </button>
+
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav nav ml-auto">
+              <li class="nav-item"><a href="index.html#home-section" class="nav-link"><span>Home</span></a></li>
+              <li class="nav-item"><a href="index.html#about-section" class="nav-link"><span>About</span></a></li>
+              <li class="nav-item"><a href="index.html#projects-section" class="nav-link"><span>Projects</span></a></li>
+              <li class="nav-item"><a href="index.html#resume-section" class="nav-link"><span>Resume</span></a></li>
+              <li class="nav-item"><a href="index.html#contact-section" class="nav-link"><span>Contact</span></a></li>
+	        </ul>
+	      </div>
+	    </div>
+	  </nav>
+<!--	  <div class="hero-wrap js-fullheight">-->
+<!--      <div class="overlay"></div>-->
+<!--      <div class="container">-->
+<!--        <div class="row no-gutters slider-text js-fullheight justify-content-center align-items-center">-->
+<!--          <div class="col-lg-10 ftco-animate d-flex align-items-center">-->
+<!--          	<div class="text text-center">-->
+<!--          		<h1 class="mb-3 bread">Blog Single Post</h1>-->
+<!--	            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a href="blog.html">Blog <i class="ion-ios-arrow-forward"></i></a></span> <span>Blog Single <i class="ion-ios-arrow-forward"></i></span></p>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+		
+		<section class="ftco-section">
+      <div class="container">
+        <br>
+
+        <div class="row">
+          <div class="col-lg-8 ftco-animate">
+            <h2 class="mb-3">Wrench Manufactuing Automation</h2>
+            <br>
+
+            <p>This was my final project in the MSR (Masters of Science in Robotics) program at Northwestern University. The project was to automate the production of the LoggerHead Tools Bionic Wrench.</p>
+            <iframe width=100% height="425" src="https://www.youtube.com/embed/_B8rRwbNTxc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+            
+            <h3 id="overview">Overview</h3>
+            <p>The goal for this project was to continue to evolve the design created by Levi Todes (MSR &#39;18) and add usability features like a magazine to store wrench jaws, a bowl descrambler to orient wrench jaws, and a movable platform for easy wrench placement. </p>
+            <p>There were three main components to this project, the structure which was made out of sheet metal, the magazine which was 3D printed and the bowl descrambler ramp which was also 3D printed. Each one of these parts went through many iterations along the design process. All of the parts were designed using SolidWorks and most were printed on the Ultimaker 3.</p>
+            <p>A PIC32MX250F128B was used to control the system, along with a DRV8834 stepper controller from pololu (for stepper motor control). The MPLab SNAP was used as the programmer and the code was in C. </p>
+
+
+            <h3 id="approach">Approach</h3>
+            <p>Going into this project I knew there were three main areas that I wanted to target -- The wrench placement, jaw orientation process and jaw feeding process. </p>
+            <p>The wrench placement process in the previous design required the user to take off a drive gear, place the wrench in a 3D printed holder and then reattatch the gear to the assembly using some magnetic latches as can be see on <a href="https://github.com/LeTo37/Part_Placement_Automation_Project">Levi&#39;s Repository</a>.</p>
+            <p>My new mechanism uses a hinge to allow the wrench to be placed on in a horizontal orientation and then moved into a vertical orientation by just flipping the whole mechanism up. This can be done with a stepper motor and lead screw, but ultimately it was decided that its easy enough to do by hand. </p>
+            <p>For the jaw orientation process, there was not really any work already completed. For this I first used pieces of cardboard, metal and tape to try and knock the pieces off of the ramp that were in the wrong orientations. After getting an understanding of how to orient the pieces, I created a few 3D printed designs and tested them out until one worked. I then refined that design a few more times until the pieces would consistently drop in the correct orientation out of the bottom of the descrambler.</p>
+            <p>For the jaw feeding process I started by modifying Levi&#39;s electromagnet technique, which would use an electromagnet to pull the jaw into position and then shut it off, allowing the jaw to succumb to gravity and fall into place. Unfortunately, I found this method to be unreliable, so I switched to a more mechanical design. This second big design iteration used a rod on the bottom and a feeding mechanism on top to feed the pieces through a track and also control when they were allowed to fall out as well. The main issue with this design was that despite numerous design iterations, I couldn&#39;t get the pieces to feed without catching on the track walls and jamming up the system. For the final big design iteration, I decided to switch to a magazine type feeder that uses a vertical tube and a pushrod to feed out the pieces like a pez dispenser. This method worked far better than the others and allowed for easy integration with the bowl descrambler through a vertical tube.</p>
+            
+            <h3 id="bionic-wrench-manufacturing-automation">Mechanical Design</h3>
+            <p></p>The mechanical design part of this project was by far the hardest part. Many of the parts designed has complex geometries that required 11 hour + 3D print jobs per part. Because of this, a lot of analysis was done between part iterations to reduce &quot;downtime&quot; where I could not further refine the design. Although only a few key design iterations will be shown in this document, many smaller iterations took place on each part to enusre that the process ran smoothly and efficiently. </p>
+            <h4 id="initial-designs">Initial Designs</h4>
+            <p>Because I was continuing work on another students&#39; project, there were intial designs available for me to work off of. Right off the bat, I noticed two main areas of Levi&#39;s design that I wanted to improve upon and Professor Brown gave me one addition to make to the process as well. These three changes/additions became the backbone of my project and were:</p>
+            <ul>
+            <li>Overall Structure</li>
+            <li>Feeding Mechanism</li>
+            <li>Jaw Orientation.</li>
+            </ul>
+            <h4 id="design-refinements">Design Refinements</h4>
+            <h5 id="overall-structure">Overall Structure</h5>
+            <p>At the start of the project I identified the structure as one of the main components that both wouldnt hold up to a manufacturing environment and could use some refinement to improve usability. Mainly, the old design was a little too flimsy (it was a prototype so this makes sense). To fix this issue, I came up with a new sheet metal pattern that I was able to cut out of aluminum using a waterjet and bend using a brake. It had relatively similar geometry to Levi&#39;s initial prototype, but the wrench would be placed on the inside, rather than the outside and the structure as a whole was bigger than the initial. Below is the new design, followed by a wrench holder mechanism further discussed below.</p>
+            <p float="left">
+              <img src="images/MainBodyRender.png" width=48% />
+              <img src="images//WrenchPlateRenderBack.png" width=48% /> 
+            </p>
+
+            <p>The new structure also has an important addition for usability. There is a middle panel that swings 90 degress from flat to vertical, allowing for easier wrench placement. The user can place the wrench in easily when it&#39;s in a horizontal mode and then the whole panel can be lifted up to interface with the jaw placement mechanism. Initially, this could be done using a stepper motor and lead screw, but ultimately it was decided that the user would be perfectly capable of doing this motion by hand so that was removed.</p>
+            <p float="left">
+              <img src="images//MainAssemRender.png" padding-left=25% width=50% />
+            </p>
+
+            <p>Embedded in this platform is the mechanism that rotates the wrench 60 degrees for each different jaw. This system is geared 2:1 so it has the required torque to rotate the wrench against gravity in its vertical position. </p>
+            <h5 id="feeding-mechanism">Feeding Mechanism</h5>
+            <p>The jaw feeding mechanism was the second design refinement I chose to tackle. Levi&#39;s design used an electromagnet to pull jaws one by one through a 3D printed tube, and then cut off power to the electromagnet allowing the jaw to fall into place in the wrench. I ultimately discovered that the electromagnet was too unreliable to continue to be used. It ended up being a passive drive to get the jaws into position so that they could be attracted by the electromagnet as well. </p>
+            <p>I tried using the electromagnet in an initial design and found that it wasn&#39;t strong enough to reliably pull jaws to the correct positon. I tried different electromagnets as well and even tried building my own to the specs I wanted, but none worked reliably. </p>
+            <p>I decided that I wanted a driven mechanism for getting the jaws into position, and that I wanted to rely less on the electromagnet. My inital design for this iteration was a feeder wheel driven by a continuous servo on the top of the jaws that would use friction to push the jaws through, and a &quot;droprod&quot; on the botton that could be pulled back by a second regular servo. The drop rod part of this iteration worked really well, but the feeder wheel had many issues. As the jaws went under the wheel, one edge would tweak up, causing the chute to become jammed and not let any other jaws through. I made a few different iterations of this design with tighter tolerances to try and prevent this behavior, but it just didn&#39;t end up working right.</p>
+            <p>For the final major design iteration on the feeding mechanism I realized that the wrench jaws were almost the same size and shape as a pez. I used a pez dispenser as inspiration and created a magazine style feeding mechanism that used a rod driven by a servo to push evenly on the whole back side of the jaw. This prevented any of the tweaking motion that jammed up the previous design. It also reduced the number of servos required by one. </p>
+            <p float="left">
+              <img src="images//FeederAssemV1Render.png" width=30% />
+              <img src="images//FeederAssemV2Render.png" width=30% /> 
+              <img src="images//FeederAssemV3Close.png" width=30% /> 
+            </p>
+            Left to Right - Electromagnet Design, Feeder Wheel Design, Magazine Design
+
+            ### Jaw Orientation
+            This objective was given to me by Professor Brown, with the goal of being able to dump jaws into a bowl descrambler and have them load directly into the jaw feeder in the correct orientation. A bowl descrambler vibrates enough to drive jaws up a ramp and they get knocked off at different points along the way if they arent in the correct orientation. For this part of the project, I spent a good deal of time getting familiar with the technology by placing cardboard and metal knockoff pieces using tape. 
+
+            Eventually I understood enough about what would knock the pieces off to 3D print a design to attempt it. After a few revisions of this part, I was able to get the pieces consitently coming out of the machine in the correct orientation, running along a rail.
+
+            The next step was to design a was for them to drop off the rail I had them running along into the vertical &quot;pez dispenser&quot; chute. This also took a few design iterations but eventually I ended up with this part, which interfaces at the end of the path on the bowl descrambler and at the top of the pez dispenser tube.
+
+            <p float="left">
+                <img src="images//RampSortV1Render.png" width=48% />
+              <img src="images//RampSortV2Render.png" width=48% />
+            </p>
+
+            <p>The angled wall knocks off all pieces that arent in a vertical orientation, and the sloped rail forces pieces that arent in the correct vertical orientation into a horizontal one, which causes them to get knocked off by the angled wall. The second longer wall with a slope at the end directs the pieces into the correct position to get picked up by the sloped rail. At the end, the box looking section is a funnel that funnels the pieces into a vertical magazine tube.</p>
+            <h4 id="other-components">Other components</h4>
+            <h5 id="actuators">Actuators</h5>
+            <p>A second stepper motor and drive board were added to drive the leadscrew and pull the platform to vertical, but those were since removed because it was decided to be unnecessary. A servo was also added that drives the rack for the magazine feeder design. </p>
+            <h5 id="electromagnet">Electromagnet</h5>
+            <p>An electromagnet was still used to hold the jaws in places as the platform is lowered to its horizontal position. Without the electromagnet, the jaws at the top of the wrench would fall out due to gravity on the way down. The electromagnet is embedded in the 3D printed wrench holder and is constantly on (run at 12V). However in the most recent version the electromagnet was swapped for 6 smaller neodymium magnets -- mainly because the electromagnet was always on and its wires would constantly get tangled.</p>
+            <h5 id="wrench-holder">Wrench Holder</h5>
+            <p>The wrench holder also went through a few design iterations. Starting out with Levi&#39;s inital design, I hollowed out the back to make room for the electromagnet and simplified the design a little bit because some of the additional features from his original were no longer necessary with my new design. </p>
+            <p float="left">
+              <img src="images//LeviHolderRender.png" width=30% />
+              <img src="images//HolderRenderV2.png" width=30% /> 
+              <img src="images//HolderRenderV3.png" width=30% /> 
+            </p>
+
+<p>In the final design iteration for this part, I used 6 neodymium magnets instead of the electromagnet to improve reliability and get rid of the wires coming off of the electromagnet which would often get tangled.</p>
+
+            <h3 id="electronics">Electronics</h3>
+            <p>My new version did not modify Levi's electronics besides the addition of a servo, the momentary addition of a second stepper motor and driver (which was later removed) and the removal of the electromagnet driver. </p>
+            <h4 id="levi-s-electronics-notes">Levi&#39;s Electronics Notes</h4>
+            <h5 id="microcontroller">Microcontroller</h5>
+            <p>The brains of the project allowing for the electromagnet to be triggered at the right time and controlling the rotation and timing of the stepper motor is a <a href="../Docs/PIC32MX1XX2XX-28-36-44-PIN-DS60001168K.pdf">PIC32MX250F128B</a> microcontoller. </p>
+            <p>The breakout schematic of this microcontroller, necessary for programming as well as interaction at a 3.3V logic level, is shown below. It includes a 3.3V voltage regulator, a <a href="https://www.pololu.com/" target="_blank">Pololu</a> breakout board of a micro-usb connector as well as a MPLAB Snap for programming.</p>
+            <p><img src="images/PIC32_BREAKOUT.png" alt="PIC32_BREAKOUT" width=100%></p>
+            <h5 id="stepper-motor-driver">Stepper Motor Driver</h5>
+            <p>The circuitry used to control the stepper motor is the Pololu <a href="https://www.pololu.com/product/2133/resources">MD20b</a> chip. This chip is a breakout board for the <a href="../Docs/drv8825.pdf">DRV8825</a> which has two H-bridge
+            drivers and a microstepping indexer, along with some protective circuitry. This chip allows the stepper to be simply controlled by 3 GPIO pins to control the step resolution (M0,M1,M2) and one pin set to output a PWM signal (STEP). This chip also allows for 3.3V logic to be used from the microcontroller while supplying the motor with the 12V necesarry to use it. </p>
+            <p>As can be seen in the <a href="../Code">code</a> directory, pins M0, M1 and M2 are used to set the resolution at which the motor is controlled. Setting M0 and M1 high and M2 low sets the driver to control the motor in 1/8 step mode, meaning the 200-step-per-revolution motor now has 1600 microsteps per revolution. A PWM signal is sent to the STEP pin to drive the motor.</p>
+            <p><img src="images/STEPPER_MOTOR_DRIVER.png" alt="STEPPER_MOTOR_DRIVER" width=100%></p>
+            <h4 id="peter-s-electronics-notes">Peter&#39;s Electronics Notes</h4>
+            <h5 id="servo">Servo</h5>
+            <p>A servo was added to the electronics part of this project. The servo had three wires, red, black and white which were connected to 5V, GND and pin 6 on the PIC32, respectively. A PWM signal was outputted to pin 6 which allows for control over the servo position. </p>
+            <h5 id="overall-layout">Overall Layout</h5>
+            <p>Here is a picture of the final layout of the system on it&#39;s breadboards. The smaller breadboard is running off of 12V (from an external supply) and the larger one runs off of USB which is converted to 3.3V by the Pololu voltage regulator you can see in the top center.
+            <img src="images/Electronics.jpg" width=100%>
+            
+                        
+            <h3 id="code">Code</h3>
+            <p>The <a href="https://www.microchip.com/mplab/mplab-x-ide">MPLAB X IDE</a> was used in this project to program the <a href="../Docs/PIC32MX1XX2XX-28-36-44-PIN-DS60001168K.pdf">PIC32MX250F128B</a> microcontoller. Code was written in C and programmed using the MPLab SNAP.</p>
+            <p>The code for this project is relatively straightforward with two main functions. One function is control of the servo by varying the PWM output on pin 6 of the PIC32. By changing the PWM, the servo will go to different positions. The other function is for movement of the stepper motor. This is done again through PWM. There are also four additional wires going to the Pololu DRV8834 board, three of which control microstepping and the last controls direction.</p>
+            <p>Overall, the code activates a 6X loop when a limit switch is pressed and each time it goes through the loop the wrench moves 60 degrees, the feeder pushes out a new jaw and the wrench wiggles twice to attempt to ensure that the jaws fall back into place. At the end of the loop, the mechanism swings back around 360 degrees in the opposite direction to get back to 0.</p>
+
+
+            
+
+          </div> <!-- .col-md-8 -->
+          <div class="col-lg-4 sidebar ftco-animate">
+
+            <div class="sidebar-box ftco-animate">
+            	<h3 class="heading-sidebar">Skills Used</h3>
+              <ul class="categories">
+                <li>SolidWorks <span>(Component Design)</span></li>
+                <li>C, MPLAB <span>(Firmware Design)</span></li>
+                <li>Eagle <span>(Schematic Design)</span></li>
+                <li>PIC32 <span>(Electronics)</span></li>
+
+              </ul>
+            </div>
+
+            <div class="sidebar-box ftco-animate">
+              <h3 class="heading-sidebar">Learn More</h3>
+              <div class="block-21 mb-4 d-flex">
+                <a class="blog-img mr-4" style="background-image: url(images/MainAssemRender.png);"></a>
+                <div class="text">
+                  <h3 class="heading"><a href="https://github.com/petercsauer/wrenchautomation">Wrench Automation Github</a></h3>
+                  <div class="meta">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section> <!-- .section -->
+
+    <footer class="ftco-footer ftco-section">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">About</h2>
+              <p>
+                I have been a passionate engineer and computer scientist since my early high school years. I aim to continue to develop my engineering skills as a Masters student.</p>
+              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+                <li class="ftco-animate"><a href="https://github.com/petercsauer"><span class="icon-github"></span></a></li>
+                <li class="ftco-animate"><a href="https://www.facebook.com/petercsauer"><span class="icon-facebook"></span></a></li>
+                <li class="ftco-animate"><a href="https://www.linkedin.com/in/petercsauer/"><span class="icon-linkedin"></span></a></li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </footer>
+    
+  
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/jquery.animateNumber.min.js"></script>
+  <script src="js/scrollax.min.js"></script>
+  
+  <script src="js/main.js"></script>
+    
+  </body>
+</html>
