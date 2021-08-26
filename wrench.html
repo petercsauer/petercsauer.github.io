@@ -146,24 +146,23 @@
 
 <p>In the final design iteration for this part, I used 6 neodymium magnets instead of the electromagnet to improve reliability and get rid of the wires coming off of the electromagnet which would often get tangled.</p>
 
-            <h3 id="electronics">Electronics</h3>
-            <p>My new version did not modify Levi's electronics besides the addition of a servo, the momentary addition of a second stepper motor and driver (which was later removed) and the removal of the electromagnet driver. </p>
-            <h4 id="levi-s-electronics-notes">Levi&#39;s Electronics Notes</h4>
-            <h5 id="microcontroller">Microcontroller</h5>
-            <p>The brains of the project allowing for the electromagnet to be triggered at the right time and controlling the rotation and timing of the stepper motor is a <a href="../Docs/PIC32MX1XX2XX-28-36-44-PIN-DS60001168K.pdf">PIC32MX250F128B</a> microcontoller. </p>
-            <p>The breakout schematic of this microcontroller, necessary for programming as well as interaction at a 3.3V logic level, is shown below. It includes a 3.3V voltage regulator, a <a href="https://www.pololu.com/" target="_blank">Pololu</a> breakout board of a micro-usb connector as well as a MPLAB Snap for programming.</p>
+            <h3 id="electrical-design">Electrical Design</h3>
+            <p>This directory contains the eagle files that Levi created in his version of the device. My version did not modify his electronics besides the addition of a servo, the momentary addition of a second stepper motor and driver (which was later removed) and the removal of the electromagnet driver. </p>
+            <h4 id="microcontroller">Microcontroller</h4>
+            <p>For this project the PIC32MX250F128B was used as the control unit for the process. It was used to control the stepper motor and servo and in the past was used to control an electromagnet, but ultimately it was decided to keep that on full time.</p>
+            <p>The breakout schematic from eagle for the process is shown below, which shows the 3.3V regulator, pololu dual h-bridge, micro usb connector (for power) and MPLAB SNAP (for programming). </p>
             <p><img src="images/PIC32_BREAKOUT.png" alt="PIC32_BREAKOUT" width=100%></p>
-            <h5 id="stepper-motor-driver">Stepper Motor Driver</h5>
+            <h4 id="stepper-motor-driver">Stepper Motor Driver</h4>
             <p>The circuitry used to control the stepper motor is the Pololu <a href="https://www.pololu.com/product/2133/resources">MD20b</a> chip. This chip is a breakout board for the <a href="../Docs/drv8825.pdf">DRV8825</a> which has two H-bridge
             drivers and a microstepping indexer, along with some protective circuitry. This chip allows the stepper to be simply controlled by 3 GPIO pins to control the step resolution (M0,M1,M2) and one pin set to output a PWM signal (STEP). This chip also allows for 3.3V logic to be used from the microcontroller while supplying the motor with the 12V necesarry to use it. </p>
             <p>As can be seen in the <a href="../Code">code</a> directory, pins M0, M1 and M2 are used to set the resolution at which the motor is controlled. Setting M0 and M1 high and M2 low sets the driver to control the motor in 1/8 step mode, meaning the 200-step-per-revolution motor now has 1600 microsteps per revolution. A PWM signal is sent to the STEP pin to drive the motor.</p>
-            <p><img src="images/STEPPER_MOTOR_DRIVER.png" alt="STEPPER_MOTOR_DRIVER" width=100%></p>
-            <h4 id="peter-s-electronics-notes">Peter&#39;s Electronics Notes</h4>
-            <h5 id="servo">Servo</h5>
+            <p><img src="images/STEPPER_MOTOR_DRIVER.png"  width=100% alt="STEPPER_MOTOR_DRIVER"></p>
+            <h4 id="servo">Servo</h4>
             <p>A servo was added to the electronics part of this project. The servo had three wires, red, black and white which were connected to 5V, GND and pin 6 on the PIC32, respectively. A PWM signal was outputted to pin 6 which allows for control over the servo position. </p>
-            <h5 id="overall-layout">Overall Layout</h5>
+            <h4 id="overall-layout">Overall Layout</h4>
             <p>Here is a picture of the final layout of the system on it&#39;s breadboards. The smaller breadboard is running off of 12V (from an external supply) and the larger one runs off of USB which is converted to 3.3V by the Pololu voltage regulator you can see in the top center.
-            <img src="images//Electronics.jpg" width=100%>
+            <img src="images/Electronics.jpg" width=100% alt=""></p>
+
             
                         
             <h3 id="code">Code</h3>
