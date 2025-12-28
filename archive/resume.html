@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peter Sauer - Resume</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        .resume-container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .header .subtitle {
+            font-size: 0.9em;
+            letter-spacing: 1px;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            font-size: 0.9em;
+            margin-top: 20px;
+        }
+
+        .contact-info span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 0;
+        }
+
+        .left-column {
+            padding: 40px;
+        }
+
+        .right-column {
+            background: #f8f9fa;
+            padding: 40px 30px;
+            border-left: 1px solid #e0e0e0;
+        }
+
+        .section {
+            margin-bottom: 35px;
+        }
+
+        .section-title {
+            font-size: 1.4em;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 3px solid #3498db;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .job, .education-item {
+            margin-bottom: 25px;
+        }
+
+        .job-title, .degree {
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+
+        .company, .school {
+            color: #3498db;
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+
+        .date {
+            color: #7f8c8d;
+            font-size: 0.9em;
+            font-style: italic;
+            margin-bottom: 8px;
+        }
+
+        .job-description {
+            color: #555;
+            line-height: 1.7;
+            text-align: justify;
+        }
+
+        .education-details {
+            color: #555;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        .reference {
+            margin-bottom: 20px;
+        }
+
+        .reference-name {
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 1.05em;
+        }
+
+        .reference-title {
+            color: #3498db;
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+
+        .reference-contact {
+            color: #666;
+            font-size: 0.85em;
+            line-height: 1.5;
+        }
+
+        .skills-category {
+            margin-bottom: 20px;
+        }
+
+        .skills-category-title {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 8px;
+            font-size: 1.05em;
+        }
+
+        .skills-list {
+            color: #555;
+            font-size: 0.9em;
+            line-height: 1.7;
+        }
+
+        .extracurricular {
+            margin-bottom: 20px;
+        }
+
+        .extracurricular-title {
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 1em;
+            margin-bottom: 3px;
+        }
+
+        .extracurricular-date {
+            color: #7f8c8d;
+            font-size: 0.85em;
+            margin-bottom: 5px;
+        }
+
+        .extracurricular-description {
+            color: #555;
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .resume-container {
+                box-shadow: none;
+                max-width: 100%;
+            }
+
+            .section {
+                page-break-inside: avoid;
+            }
+
+            .job, .education-item {
+                page-break-inside: avoid;
+            }
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+
+            .right-column {
+                border-left: none;
+                border-top: 1px solid #e0e0e0;
+            }
+
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="resume-container">
+        <!-- Header -->
+        <div class="header">
+            <h1>PETER SAUER</h1>
+            <div class="subtitle">BS MECHANICAL ENGINEERING & COMPUTER SCIENCE | MASTER OF SCIENCE IN ROBOTICS</div>
+            <div class="contact-info">
+                <span>📞 (203) 644-6182</span>
+                <span>📧 petercsauer@me.com</span>
+                <span>📍 491 Vincente Avenue, Berkeley CA 94707</span>
+                <span>🌐 petercsauer.github.io</span>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <!-- Left Column -->
+            <div class="left-column">
+                <!-- Work Experience -->
+                <div class="section">
+                    <h2 class="section-title">Work Experience</h2>
+                    
+                    <div class="job">
+                        <div class="job-title">Mechatronics Engineer</div>
+                        <div class="company">@ OCEAN POWER TECHNOLOGIES</div>
+                        <div class="date">August 2020 - Present</div>
+                        <p class="job-description">
+                            Worked both in and outside of the scope of my role as a Mechatronics Engineer at OPT. Started as the 5th employee in the company, and worked through an acquisition to help grow the team to over 20 employees. Developed software, firmware, and hardware for our autonomous vehicles (the WAM-V). Traveled consistently to aid teams in development projects around the globe including in the Middle East and Offshore projects in Alaska. Worked closely with teams in the field to develop solutions for surveillance, seafloor mapping and a variety of other applications.
+                        </p>
+                    </div>
+
+                    <div class="job">
+                        <div class="job-title">Mechanical Engineer</div>
+                        <div class="company">@ PRESCO INC.</div>
+                        <div class="date">March 2020 - August 2020</div>
+                        <p class="job-description">
+                            Designed and built a prototype for a UV-C mask cleaner that incorporated an arduino-based timer to protect users from harmful UV-C LEDs. Also designed and built a prototype of a UV-C mail cleaner that used two stepper motors to feed mail through a UV-C cleaner. (COVID era)
+                        </p>
+                    </div>
+
+                    <div class="job">
+                        <div class="job-title">Creative Lead</div>
+                        <div class="company">@ PROJECT CYCLONE</div>
+                        <div class="date">2020 - 2021</div>
+                        <p class="job-description">
+                            Worked on the UI for a startup company I co-founded that takes sensor data from machines (diesel engines for our test case) and uses Machine Learning to produce a maintenance schedule that reduces machine downtime considerably.
+                        </p>
+                    </div>
+
+                    <div class="job">
+                        <div class="job-title">Software Dev Intern</div>
+                        <div class="company">@ PIKE TECHNOLOGIES</div>
+                        <div class="date">Summer 2019</div>
+                        <p class="job-description">
+                            Primarily worked on automating a coating process using the 861 Deposition Controller by Telemark. Also added wireless connectivity to a temperature control module and programmed a web application to display temperatures plotted over time.
+                        </p>
+                    </div>
+
+                    <div class="job">
+                        <div class="job-title">Student Worker</div>
+                        <div class="company">@ GRAINGER DESIGN INNOVATION LAB</div>
+                        <div class="date">Spring 2019</div>
+                        <p class="job-description">
+                            Aided professors and grad/undergrad students in rapid prototyping processes like 3D printing, lasercutting and CNC routing.
+                        </p>
+                    </div>
+
+                    <div class="job">
+                        <div class="job-title">Sailing Instructor</div>
+                        <div class="company">@ NORWALK YACHT CLUB</div>
+                        <div class="date">Summer 2016 - 2018</div>
+                        <p class="job-description">
+                            Taught children (ages 7-17) and adults how to sail. Worked with small groups of all levels to teach safety, sailing fundamentals, boat set up and racing strategies.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Education -->
+                <div class="section">
+                    <h2 class="section-title">Education</h2>
+                    
+                    <div class="education-item">
+                        <div class="degree">Master of Science in Robotics</div>
+                        <div class="school">NORTHWESTERN UNIVERSITY</div>
+                        <div class="date">2020 - 2021</div>
+                        <div class="education-details">GPA 3.8/4</div>
+                    </div>
+
+                    <div class="education-item">
+                        <div class="degree">BS in Mechanical Engineering, Minor in CS</div>
+                        <div class="school">UNIVERSITY OF WISCONSIN</div>
+                        <div class="date">2016 - 2020</div>
+                        <div class="education-details">GPA 3.2/4</div>
+                    </div>
+
+                    <div class="education-item">
+                        <div class="school">STAPLES HIGH SCHOOL</div>
+                        <div class="education-details">
+                            GPA 3.9 | National Honor Society<br>
+                            National Merit Scholar<br>
+                            Design Innovation Award
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Extracurriculars -->
+                <div class="section">
+                    <h2 class="section-title">Extracurriculars</h2>
+                    
+                    <div class="extracurricular">
+                        <div class="extracurricular-title">Wisconsin Sailing Team Captain</div>
+                        <div class="extracurricular-date">2019 - 2020</div>
+                        <p class="extracurricular-description">
+                            Managed a team of 40-50 college sailors competing at the national level. Coordinated travel across the US, managed a $100,000+ budget, created rosters, hired coaches and staff.
+                        </p>
+                    </div>
+
+                    <div class="extracurricular">
+                        <div class="extracurricular-title">FIRST Tech Challenge Team Captain and Founder</div>
+                        <div class="extracurricular-date">2019 - 2020</div>
+                        <p class="extracurricular-description">
+                            Founded a FTC team (6081) that won awards at the World Championship three years in a row, and won second place in its final year.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="right-column">
+                <!-- Skills -->
+                <div class="section">
+                    <h2 class="section-title">Skills</h2>
+                    
+                    <div class="skills-category">
+                        <div class="skills-category-title">Programming</div>
+                        <div class="skills-list">
+                            Debian, Ubuntu, Windows, MacOS<br>
+                            Computer Vision<br>
+                            Python (With ROS Experience)<br>
+                            C, C++ (W/ Microcontrollers and ROS)<br>
+                            Javascript, CSS, HTML
+                        </div>
+                    </div>
+
+                    <div class="skills-category">
+                        <div class="skills-category-title">CAD Modeling</div>
+                        <div class="skills-list">
+                            SolidWorks<br>
+                            Autodesk Inventor
+                        </div>
+                    </div>
+
+                    <div class="skills-category">
+                        <div class="skills-category-title">Design</div>
+                        <div class="skills-list">
+                            Adobe Illustrator<br>
+                            Adobe Photoshop
+                        </div>
+                    </div>
+
+                    <div class="skills-category">
+                        <div class="skills-category-title">Other</div>
+                        <div class="skills-list">
+                            Computer Networking<br>
+                            Rapid Prototyping<br>
+                            3D Printing
+                        </div>
+                    </div>
+                </div>
+
+                <!-- References -->
+                <div class="section">
+                    <h2 class="section-title">References</h2>
+                    
+                    <div class="reference">
+                        <div class="reference-name">Josh Mehlman</div>
+                        <div class="reference-title">Senior Director of Engineering for Autonomous Vehicles at Ocean Power Technologies Inc.</div>
+                        <div class="reference-contact">
+                            Phone: 510-367-0995<br>
+                            Email: eel.josh@gmail.com
+                        </div>
+                    </div>
+
+                    <div class="reference">
+                        <div class="reference-name">Mark Gundersen</div>
+                        <div class="reference-title">VP of Autonomous Vehicles at Ocean Power Technologies Inc.</div>
+                        <div class="reference-contact">
+                            Phone: 510-334-5525<br>
+                            Email: mgundersen@oceanpowertech.com
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Optional: Add print button functionality
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && e.key === 'p') {
+                window.print();
+            }
+        });
+    </script>
+</body>
+</html>
+

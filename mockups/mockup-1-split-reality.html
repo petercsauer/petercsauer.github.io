@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peter Sauer - Split Reality Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #FF6B35;
+            --secondary: #004E89;
+            --dark: #1A1A1A;
+            --light: #F7F7F7;
+            --accent: #00D9FF;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        /* Fixed Sidebar Navigation */
+        .sidebar-nav {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 80px;
+            height: 100vh;
+            background: var(--dark);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 0;
+        }
+
+        .sidebar-nav .logo {
+            color: var(--primary);
+            font-size: 1.5rem;
+            font-weight: 700;
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            margin-bottom: 3rem;
+        }
+
+        .sidebar-nav nav {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .sidebar-nav a {
+            color: var(--light);
+            text-decoration: none;
+            font-size: 0.75rem;
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            transition: color 0.3s;
+            padding: 1rem 0;
+        }
+
+        .sidebar-nav a:hover {
+            color: var(--primary);
+        }
+
+        /* Main Content Area */
+        .main-content {
+            margin-left: 80px;
+        }
+
+        /* Hero Section - Split Design */
+        .hero {
+            height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-left {
+            background: var(--dark);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 4rem;
+            position: relative;
+        }
+
+        .hero-right {
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .hero-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(3rem, 8vw, 7rem);
+            font-weight: 700;
+            line-height: 0.9;
+            color: var(--light);
+            margin-bottom: 1rem;
+            opacity: 0;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 2vw, 1.5rem);
+            color: var(--accent);
+            margin-bottom: 2rem;
+            opacity: 0;
+        }
+
+        .hero-roles {
+            font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 400px;
+            line-height: 1.8;
+            opacity: 0;
+        }
+
+        .hero-large-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(8rem, 15vw, 20rem);
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.1);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            white-space: nowrap;
+            opacity: 0;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--dark);
+            font-size: 0.8rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0;
+        }
+
+        .scroll-indicator::after {
+            content: '';
+            width: 1px;
+            height: 40px;
+            background: var(--dark);
+            animation: scroll-line 2s infinite;
+        }
+
+        @keyframes scroll-line {
+            0%, 100% { transform: scaleY(1); transform-origin: top; }
+            50% { transform: scaleY(0.5); transform-origin: top; }
+        }
+
+        /* About Section - Diagonal Split */
+        .about {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            position: relative;
+            background: var(--light);
+        }
+
+        .about-content {
+            padding: 8rem 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-label {
+            font-size: 0.9rem;
+            color: var(--primary);
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+
+        .about-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 2rem;
+            line-height: 1.1;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        .about-details {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .about-detail {
+            font-size: 0.9rem;
+        }
+
+        .about-detail strong {
+            color: var(--secondary);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .about-image-wrapper {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scale(1.2);
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary) 0%, transparent 50%);
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        .diagonal-overlay {
+            position: absolute;
+            top: 0;
+            right: -10%;
+            width: 50%;
+            height: 100%;
+            background: var(--secondary);
+            transform: skewX(-8deg);
+            z-index: 1;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 4px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            width: fit-content;
+            margin-top: 1rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+        }
+
+        /* Timeline Section */
+        .timeline-section {
+            background: var(--dark);
+            padding: 8rem 4rem;
+            position: relative;
+        }
+
+        .timeline-header {
+            max-width: 1200px;
+            margin: 0 auto 6rem;
+            text-align: center;
+        }
+
+        .timeline-header h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(3rem, 6vw, 5rem);
+            color: var(--light);
+            margin-bottom: 1rem;
+        }
+
+        .timeline-header p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .timeline {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--primary);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            margin-bottom: 8rem;
+            position: relative;
+            opacity: 0;
+        }
+
+        .timeline-item:nth-child(odd) {
+            text-align: right;
+            padding-right: calc(50% + 4rem);
+        }
+
+        .timeline-item:nth-child(even) {
+            text-align: left;
+            padding-left: calc(50% + 4rem);
+        }
+
+        .timeline-dot {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            border-radius: 50%;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 0 4px var(--dark), 0 0 0 6px var(--primary);
+        }
+
+        .timeline-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2.5rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .timeline-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(255, 107, 53, 0.2);
+            border-color: var(--primary);
+        }
+
+        .timeline-date {
+            font-size: 0.9rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .timeline-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.8rem;
+            color: var(--light);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-subtitle {
+            font-size: 1rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .timeline-description {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Skills Section */
+        .skills-section {
+            background: var(--light);
+            padding: 8rem 4rem;
+        }
+
+        .skills-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .skills-header {
+            margin-bottom: 4rem;
+        }
+
+        .skills-header h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 1rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+        }
+
+        .skill-category {
+            opacity: 0;
+        }
+
+        .skill-category h3 {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            padding: 0.75rem 0;
+            font-size: 1rem;
+            color: #666;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            transition: color 0.3s, padding-left 0.3s;
+        }
+
+        .skill-list li:hover {
+            color: var(--primary);
+            padding-left: 1rem;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: var(--secondary);
+            padding: 8rem 4rem;
+            position: relative;
+        }
+
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .contact-info h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--light);
+            margin-bottom: 2rem;
+        }
+
+        .contact-info p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--light);
+            font-size: 1rem;
+        }
+
+        .contact-item strong {
+            color: var(--accent);
+            min-width: 100px;
+        }
+
+        .contact-links {
+            margin-top: 2rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .contact-links a {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light);
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .contact-links a:hover {
+            background: var(--primary);
+        }
+
+        .contact-visual {
+            position: relative;
+            height: 400px;
+        }
+
+        .contact-visual-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(4rem, 8vw, 8rem);
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.05);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .sidebar-nav {
+                width: 60px;
+                padding: 1rem 0;
+            }
+
+            .main-content {
+                margin-left: 60px;
+            }
+
+            .hero,
+            .about {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-left,
+            .about-content {
+                padding: 4rem 2rem;
+            }
+
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                text-align: left;
+                padding-left: 4rem;
+                padding-right: 2rem;
+            }
+
+            .timeline::before {
+                left: 0;
+            }
+
+            .timeline-dot {
+                left: 0;
+                transform: translateX(-50%);
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <div class="sidebar-nav">
+        <div class="logo">PS</div>
+        <nav>
+            <a href="#hero">Home</a>
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#skills">Skills</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Hero Section -->
+        <section id="hero" class="hero">
+            <div class="hero-left">
+                <div class="hero-subtitle">Hey! I am</div>
+                <h1 class="hero-title">PETER<br>SAUER</h1>
+                <p class="hero-roles">Mechanical Engineer · Developer · Roboticist · Graphic Designer · Sailor</p>
+            </div>
+            <div class="hero-right">
+                <div class="hero-large-text">2025</div>
+                <div class="scroll-indicator">
+                    Scroll
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about">
+            <div class="about-content">
+                <div class="section-label">About Me</div>
+                <h2 class="about-title">Building the Future with Robotics & Engineering</h2>
+                <p class="about-text">
+                    I have been a passionate engineer and computer scientist since my early high school years. 
+                    I've continued my career in robotics through a Masters program at Northwestern University 
+                    and a job designing autonomous boats at Ocean Power Technologies.
+                </p>
+                <div class="about-details">
+                    <div class="about-detail">
+                        <strong>Location</strong>
+                        Berkeley, CA
+                    </div>
+                    <div class="about-detail">
+                        <strong>Email</strong>
+                        petercsauer@me.com
+                    </div>
+                    <div class="about-detail">
+                        <strong>Phone</strong>
+                        (203) 644-6182
+                    </div>
+                    <div class="about-detail">
+                        <strong>Born</strong>
+                        July 6, 1998
+                    </div>
+                </div>
+                <a href="../PeterSauer2023.pdf" class="cta-button">Download CV</a>
+            </div>
+            <div class="about-image-wrapper">
+                <img src="../images/peter.jpeg" alt="Peter Sauer" class="about-image">
+                <div class="diagonal-overlay"></div>
+            </div>
+        </section>
+
+        <!-- Timeline Projects Section -->
+        <section id="projects" class="timeline-section">
+            <div class="timeline-header">
+                <div class="section-label" style="color: var(--accent);">Portfolio</div>
+                <h2>Project Timeline</h2>
+                <p>A journey through innovation and engineering excellence</p>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-date">September 2021 - Present</div>
+                        <h3 class="timeline-title">WAM-V</h3>
+                        <div class="timeline-subtitle">Ocean Power Technologies</div>
+                        <p class="timeline-description">
+                            An Autonomous Boat for survey work and surveillance. Working as a Mechatronics Engineer 
+                            designing autonomous motor boats for government applications and scientific research.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-date">2020-2021</div>
+                        <h3 class="timeline-title">RoboTee</h3>
+                        <div class="timeline-subtitle">Presco Inc.</div>
+                        <p class="timeline-description">
+                            A dynamically adjustable robotic baseball tee. Designed hardware in SolidWorks, 
+                            firmware for electronics, and built an Android app for wireless connectivity.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-date">May 2020 - Current</div>
+                        <h3 class="timeline-title">Project Cyclone</h3>
+                        <div class="timeline-subtitle">Penn State University</div>
+                        <p class="timeline-description">
+                            Using AI to do preventative machine maintenance. Designed a desktop application 
+                            that uses machine learning and sensor data for predictive maintenance.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-date">2020</div>
+                        <h3 class="timeline-title">BadgerBOAT</h3>
+                        <div class="timeline-subtitle">University of Wisconsin - Madison</div>
+                        <p class="timeline-description">
+                            An Autonomous Boat using ROS and MOOS. Developed autonomous navigation systems 
+                            for marine robotics applications.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-date">2020-2021</div>
+                        <h3 class="timeline-title">Sawyer Connect 4</h3>
+                        <div class="timeline-subtitle">Northwestern University</div>
+                        <p class="timeline-description">
+                            Using Rethink Robotics' Sawyer to play Connect 4. Implemented computer vision 
+                            and motion planning for interactive gameplay.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-date">2020</div>
+                        <h3 class="timeline-title">UV-C Mail Cleaner</h3>
+                        <div class="timeline-subtitle">Presco Inc.</div>
+                        <p class="timeline-description">
+                            A device to clean potentially infected mail using UV-C light. Designed hardware, 
+                            software, and firmware for automated mail processing and disinfection.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-date">2021</div>
+                        <h3 class="timeline-title">Bionic Wrench Manufacturing</h3>
+                        <div class="timeline-subtitle">Northwestern University</div>
+                        <p class="timeline-description">
+                            Creating an automated process for manufacturing the Loggerhead Tools Bionic Wrench. 
+                            Designed complete automation system for precision manufacturing.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-date">2020</div>
+                        <h3 class="timeline-title">ROS Controller</h3>
+                        <div class="timeline-subtitle">Personal Project</div>
+                        <p class="timeline-description">
+                            A controller with an e-ink display for debugging ROS applications. Custom hardware 
+                            and firmware for robotics development workflow.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-date">2012-2016</div>
+                        <h3 class="timeline-title">i²robotics</h3>
+                        <div class="timeline-subtitle">FIRST Tech Challenge</div>
+                        <p class="timeline-description">
+                            My High School FIRST Tech Challenge team. Led team development and engineering 
+                            of competitive robotics systems.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="skills-section">
+            <div class="skills-container">
+                <div class="skills-header">
+                    <div class="section-label">Expertise</div>
+                    <h2>Skills & Technologies</h2>
+                </div>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>Computer Science</h3>
+                        <ul class="skill-list">
+                            <li>Java</li>
+                            <li>Ruby</li>
+                            <li>Python</li>
+                            <li>C (Microcontrollers)</li>
+                            <li>C++ (including ROS)</li>
+                            <li>Javascript, HTML, CSS</li>
+                            <li>Networking</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Mechanical Engineering</h3>
+                        <ul class="skill-list">
+                            <li>Solidworks</li>
+                            <li>Autodesk Inventor</li>
+                            <li>Laser Cutting</li>
+                            <li>ROS & MOOS</li>
+                            <li>3D Printing</li>
+                            <li>Mill & Lathe Work</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Design</h3>
+                        <ul class="skill-list">
+                            <li>Adobe Illustrator</li>
+                            <li>Adobe Photoshop</li>
+                            <li>Adobe Lightroom</li>
+                            <li>UI/UX Design</li>
+                            <li>Graphic Design</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section">
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="section-label" style="color: var(--accent);">Get In Touch</div>
+                    <h2>Let's Work Together</h2>
+                    <p>
+                        If you have any questions or opportunities, please feel free to contact me 
+                        using the information below.
+                    </p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <strong>Email:</strong> petercsauer@me.com
+                        </div>
+                        <div class="contact-item">
+                            <strong>Phone:</strong> (203) 644-6182
+                        </div>
+                        <div class="contact-item">
+                            <strong>Location:</strong> Berkeley, CA 94707
+                        </div>
+                    </div>
+                    <div class="contact-links">
+                        <a href="https://github.com/petercsauer" target="_blank">GH</a>
+                        <a href="https://www.linkedin.com/in/petercsauer/" target="_blank">LI</a>
+                        <a href="https://www.facebook.com/petercsauer" target="_blank">FB</a>
+                    </div>
+                </div>
+                <div class="contact-visual">
+                    <div class="contact-visual-text">HELLO</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- GSAP and ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <script>
+        // Register ScrollTrigger plugin
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Hero animations
+        gsap.to('.hero-subtitle', {
+            opacity: 1,
+            duration: 1,
+            delay: 0.3
+        });
+
+        gsap.to('.hero-title', {
+            opacity: 1,
+            duration: 1,
+            delay: 0.6
+        });
+
+        gsap.to('.hero-roles', {
+            opacity: 1,
+            duration: 1,
+            delay: 0.9
+        });
+
+        gsap.to('.hero-large-text', {
+            opacity: 1,
+            duration: 1.5,
+            delay: 1.2
+        });
+
+        gsap.to('.scroll-indicator', {
+            opacity: 1,
+            duration: 1,
+            delay: 1.5
+        });
+
+        // About section animations
+        gsap.from('.about-content', {
+            scrollTrigger: {
+                trigger: '.about',
+                start: 'top 80%',
+                end: 'center center',
+                toggleActions: 'play none none reverse'
+            },
+            x: -100,
+            opacity: 0,
+            duration: 1
+        });
+
+        gsap.from('.about-image', {
+            scrollTrigger: {
+                trigger: '.about',
+                start: 'top 80%',
+                end: 'center center',
+                toggleActions: 'play none none reverse'
+            },
+            scale: 1.5,
+            duration: 1.5
+        });
+
+        // Timeline items animation
+        gsap.utils.toArray('.timeline-item').forEach((item, index) => {
+            const isOdd = index % 2 === 0;
+            
+            gsap.from(item, {
+                scrollTrigger: {
+                    trigger: item,
+                    start: 'top 85%',
+                    end: 'center center',
+                    toggleActions: 'play none none reverse'
+                },
+                x: isOdd ? -100 : 100,
+                opacity: 0,
+                duration: 0.8,
+                ease: 'power2.out'
+            });
+        });
+
+        // Skills animation
+        gsap.utils.toArray('.skill-category').forEach((category, index) => {
+            gsap.from(category, {
+                scrollTrigger: {
+                    trigger: category,
+                    start: 'top 85%',
+                    toggleActions: 'play none none reverse'
+                },
+                y: 50,
+                opacity: 0,
+                duration: 0.8,
+                delay: index * 0.2
+            });
+        });
+
+        // Parallax effect for hero large text
+        gsap.to('.hero-large-text', {
+            scrollTrigger: {
+                trigger: '.hero',
+                start: 'top top',
+                end: 'bottom top',
+                scrub: 1
+            },
+            y: 200,
+            rotation: 5
+        });
+
+        // Contact section animation
+        gsap.from('.contact-info', {
+            scrollTrigger: {
+                trigger: '.contact-section',
+                start: 'top 80%',
+                toggleActions: 'play none none reverse'
+            },
+            x: -100,
+            opacity: 0,
+            duration: 1
+        });
+
+        gsap.from('.contact-visual-text', {
+            scrollTrigger: {
+                trigger: '.contact-section',
+                start: 'top 80%',
+                toggleActions: 'play none none reverse'
+            },
+            scale: 0,
+            rotation: 180,
+            opacity: 0,
+            duration: 1.5
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
