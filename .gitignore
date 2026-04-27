@@ -1,0 +1,14 @@
+.DS_Store
+
+# Local editor/project state
+.idea/
+.vscode/
+
+# Python cache and virtual environments
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Locally generated resume exports
+Peter_Sauer_Resume_*.pdf
