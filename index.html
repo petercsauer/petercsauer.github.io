@@ -120,7 +120,15 @@
   .drawer { position: fixed; top: 0; right: 0; bottom: 0; width: min(640px, 100%); background: var(--surface); border-left: 1px solid var(--rule); z-index: 31; transform: translateX(100%); transition: transform .55s cubic-bezier(.7,0,.2,1); overflow-y: auto; }
   .open .scrim { opacity: 1; pointer-events: auto; }
   .open .drawer { transform: none; }
-  .drawer img { width: 100%; aspect-ratio: 16/10; object-fit: cover; display: block; }
+  .drawer .hero-img { width: 100%; aspect-ratio: 16/10; object-fit: cover; display: block; }
+  .drawer .body h3 { font-family: 'Fraunces', serif; font-weight: 500; font-size: 1.25rem; color: var(--ink); margin: 1.75rem 0 0.6rem; }
+  .drawer figure { margin: 1.25rem 0 1.5rem; }
+  .drawer figure .imgs { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.5rem; }
+  .drawer figure img { width: 100%; display: block; background: var(--paper); }
+  .drawer figcaption { font-size: 0.8rem; line-height: 1.5; color: var(--muted); margin-top: 0.5rem; }
+  .drawer .video { aspect-ratio: 16/9; margin: 1.5rem 0 0.5rem; background: var(--paper); }
+  .drawer .video iframe { width: 100%; height: 100%; border: 0; display: block; }
+  .drawer code { font-size: 0.85em; background: var(--paper); padding: 0.1em 0.35em; border-radius: 3px; }
   .drawer .inner { padding: 2rem 2.5rem 3rem; }
   .drawer .close { position: absolute; top: 1rem; right: 1rem; width: 40px; height: 40px; border-radius: 50%; border: none; background: var(--paper); color: var(--ink); font-size: 1.2rem; cursor: pointer; transition: transform .3s; }
   .drawer .close:hover { transform: rotate(90deg); }
@@ -242,6 +250,11 @@
 const setNav = () => document.documentElement.style.setProperty("--nav", document.querySelector("nav").offsetHeight + "px");
 setNav(); addEventListener("resize", setNav);
 
+// inline figure for drawer bodies: one or more images from images/web with a caption
+const fig = (files, cap) => `<figure><div class="imgs">${files.map(f => `<img src="images/web/${f}" alt="" loading="lazy">`).join('')}</div><figcaption>${cap}</figcaption></figure>`;
+const yt = id => `https://www.youtube-nocookie.com/embed/${id}`;
+const drive = id => `https://drive.google.com/file/d/${id}/preview`;
+
 const P = [
   { id: 'ai', feature: true, n: '01', y: '2024–now', img: 'images/web/IMG_3351.jpg', t: 'One language for a fleet that speaks five.', org: 'Applied Intuition · Senior Software Engineer',
     lede: 'A Docker-based translation layer between gRPC, ZeroMQ, MQTT, UDP and ROS2 for controlling mixed swarms, tested with 50+ agents. I also took the perception pipeline from 5 to 30 FPS.',
@@ -257,33 +270,61 @@ const P = [
     tags: ['C/C++', 'Firmware', 'Inventor', 'SolidWorks', 'Networking'], links: [['WAM-V site', 'https://wam-v.com/']] },
   { id: 'wrench', n: '04', y: '2021', img: 'images/web/MainAssemRender.jpg', t: 'A machine that loads the jaws into a wrench.', org: 'Northwestern · Capstone sponsored by Loggerhead Tools',
     lede: 'My MSR final project: I took an earlier prototype for loading Bionic Wrench jaws and added a jaw magazine, a ramp that orients jaws, and a hinged platform for placing the wrench.',
-    body: `<p>Levi Todes (MSR '18) built the first version. I redesigned it around three steps: placing the wrench, orienting the jaws, and feeding them in. The wrench now sits on a panel that swings 90° from flat to vertical, a 3D-printed bowl-descrambler ramp knocks off wrongly oriented jaws, and a magazine stores them. The frame is sheet metal, and a PIC32 with a DRV8834 stepper driver runs it, programmed in C.</p><p>A few days before the demo the electromagnet that holds the jaws broke, and the replacement was backordered, so in the video a few jaws fall out. I redesigned that stage around neodymium magnets but didn't have time to test it.</p>`,
-    tags: ['SolidWorks', 'C', 'PIC32', '3D printing', 'Sheet metal'], links: [['Video', 'https://www.youtube.com/watch?v=_B8rRwbNTxc'], ['Code', 'https://github.com/petercsauer/wrenchautomation']] },
+    body: `<p>Levi Todes (MSR '18) built the first version and Loggerhead Tools sponsored the project. Professor Brown added a goal: dump loose jaws into a bowl descrambler and have them come out ready to load. I worked on three problems: placing the wrench, orienting the jaws and feeding them in.</p>
+      <h3>Feeding the jaws</h3>
+      <p>Levi's design pulled each jaw into place with an electromagnet, then cut the power so it dropped into the wrench. I tried several electromagnets, including one I built to my own spec, and none pulled the jaws reliably. Next came a servo-driven feeder wheel on top with a drop rod underneath. The drop rod worked, but the wheel tipped one edge of each jaw up and jammed the chute, and tighter tolerances didn't fix it.</p>
+      <p>The jaws are about the size of a Pez candy, so the final version is a Pez-style magazine: a vertical tube and a servo pushrod that presses on the whole back of the jaw. It stopped the jams and needed one servo fewer.</p>
+      ${fig(['FeederAssemV1Render.jpg', 'FeederAssemV2Render.jpg', 'FeederAssemV3Close.jpg'], 'Left to right: electromagnet, feeder wheel, magazine.')}
+      <h3>Orienting the jaws</h3>
+      <p>A bowl descrambler vibrates parts up a spiral ramp, and features along the ramp knock off anything facing the wrong way. I started with cardboard, sheet metal and tape stuck to the ramp to learn what knocked which pieces off, then moved to 3D-printed inserts. In the last one, an angled wall knocks off jaws that aren't vertical, a sloped rail tips wrong-way-up jaws flat so the wall catches them, and a funnel at the end drops the rest into the magazine tube. Some of these parts took more than 11 hours to print, so I checked as much as I could before each new version.</p>
+      ${fig(['RampSortV1Render.jpg', 'RampSortV2Render.jpg'], 'Two versions of the ramp insert.')}
+      <h3>Structure</h3>
+      <p>The prototype frame was too flimsy for a factory floor, so I redrew it as waterjet-cut aluminum bent on a brake, with the wrench mounted inside instead of outside. A middle panel swings 90°: you load the wrench flat, then flip it up to the feeder. I first drove that with a stepper and lead screw, then took them out because doing it by hand was easy. A 2:1 gear train in the panel turns the wrench 60° per jaw against gravity.</p>
+      ${fig(['MainBodyRender.jpg'], 'The sheet-metal frame.')}
+      ${fig(['LeviHolderRender.jpg', 'HolderRenderV2.jpg', 'HolderRenderV3.jpg'], 'The wrench holder: Levi\'s original, hollowed out for the electromagnet, then six neodymium magnets.')}
+      <h3>Electronics and code</h3>
+      <p>A PIC32MX250F128B runs everything, programmed in C with an MPLAB SNAP. I kept Levi's board and added a servo for the magazine. The stepper runs through a Pololu driver at 1/8 microstepping, so the 200-step motor gets 1,600 steps per turn. Pressing a limit switch starts a six-pass loop: turn the wrench 60°, push out a jaw, wiggle twice to seat it. At the end the wrench turns 360° back to zero.</p>
+      ${fig(['Electronics.jpg'], 'The final breadboards: 12 V on the small one, USB power stepped down to 3.3 V on the large one.')}
+      <h3>The demo</h3>
+      <p>An electromagnet in the holder keeps the jaws in while the platform lowers. A few days before the demo it broke and the replacement was backordered, so in the video a few jaws fall out. The neodymium holder was my fix, and I didn't get to test it in time.</p>`,
+    video: yt('_B8rRwbNTxc'),
+    tags: ['SolidWorks', 'C', 'PIC32', '3D printing', 'Sheet metal'], links: [['Code', 'https://github.com/petercsauer/wrenchautomation'], ["Levi's original", 'https://github.com/LeTo37/Part_Placement_Automation_Project']] },
   { id: 'sawyer', n: '05', y: '2020', img: 'images/web/sawyer.jpg', t: 'Teaching Sawyer to play Connect 4.', org: 'Northwestern · ME 495',
     lede: 'AprilTag-guided pick and place with MoveIt on a Rethink Sawyer arm.',
     body: `<p>Group project for ME 495. Two cameras: a color head camera reads the board, and a grayscale wrist camera localizes checkers and slots with AprilTags.</p><p>I owned pick-and-place: I connected AprilTag detection to MoveIt so one function call drops a checker in any column.</p>`,
-    tags: ['ROS', 'MoveIt', 'AprilTag', 'Computer vision'], links: [['Video', 'https://drive.google.com/file/d/1GtUF3O2Hy_-Y72iuOX-wisW5VkVVhp8K/view']] },
+    tags: ['ROS', 'MoveIt', 'AprilTag', 'Computer vision'], video: drive('1GtUF3O2Hy_-Y72iuOX-wisW5VkVVhp8K') },
 ];
 const MORE = [
-  { y: '2021', img: 'images/web/FullAssembly.jpg', t: 'ROS Controller', s: 'Northwestern MSR winter project · Pi 4 + e-ink',
-    body: `<p>A handheld ROS debugger: a Raspberry Pi 4 drives a 7.8″ Waveshare e-ink screen that shows whatever topics you subscribe it to. A menu runs ROS services, and one of two SparkFun Qwiic joysticks sends cmd_vel to the robot. Each laser-cut layer can be swapped to add hardware later.</p>`,
-    tags: ['ROS', 'Raspberry Pi', 'E-ink', 'Laser cutting'], links: [['Code', 'https://github.com/petercsauer/ros_controller']] },
-  { y: '2020', img: 'images/web/boat.jpg', t: 'BadgerBOAT', s: 'UW-Madison senior design · solar autonomous boat',
-    body: `<p>A year-long senior design project for client Lennon Rogers: a solar-powered autonomous boat meant to log blue-green algae on local lakes and rivers. Two teams worked in parallel; mine built the boat and made it navigate.</p><p>I worked on firmware, SolidWorks design for the hull and parts, and LiDAR and GPS navigation using ROS and MOOS.</p>`,
-    tags: ['ROS', 'MOOS', 'SolidWorks', 'LiDAR', 'GPS'], links: [['Final report (PDF)', 'docs/BadgerBoatFinalReport.pdf'], ['Video', 'https://www.youtube.com/watch?v=MRHQ8THos9s']] },
-  { y: '2020', img: 'images/web/UVCMail2.jpg', t: 'UV-C Mail Cleaner', s: 'Presco Inc. · COVID-era disinfection device',
-    body: `<p>A prototype that pulls mail between two UV-C bulbs on two stepper-driven sets of flexible wheels, which take packages up to 0.5″ thick. You set the speed, trading throughput for exposure. An Arduino Nano runs the steppers and the bulb ballasts.</p>`,
+  { id: 'controller', y: '2021', img: 'images/web/FullAssembly.jpg', t: 'ROS Controller', s: 'Northwestern MSR winter project · Pi 4 + e-ink',
+    body: `<p>My winter project in the Northwestern MSR program: a handheld controller for debugging ROS robots without a laptop. Put it on the same network as the robot and it subscribes to whatever debug topics you pick, then shows them as modules on a 7.8″ e-ink screen.</p>
+      <p>A Raspberry Pi 4 sends HDMI through a Waveshare interface board to the Waveshare e-ink display. Two SparkFun Qwiic joysticks drive the robot over <code>cmd_vel</code> or move the mouse, and a Logitech wireless keyboard and trackpad cover the rest. A menu runs any ROS service with one tap, or with a parameter you type in.</p>
+      ${fig(['interface.jpg'], 'The interface, which I wrote in pygame: ROS services on the left, basic controls, and a console of subscribed topics.')}
+      <p>Two nodes run on it: <code>controller</code> publishes the joystick twists and <code>interface</code> draws the screen. The case is a stack of laser-cut layers, so a layer can be swapped to add hardware later.</p>
+      ${fig(['FrontSide.jpg'], 'CAD of the layered case.')}`,
+    video: drive('1Vq2hrRpSAihLlSR3H_R1zQseN4hwDoo5'),
+    tags: ['ROS', 'Raspberry Pi', 'Pygame', 'E-ink', 'Laser cutting'], links: [['Code', 'https://github.com/petercsauer/ros_controller']] },
+  { id: 'badger', y: '2020', img: 'images/web/boat.jpg', t: 'BadgerBOAT', s: 'UW-Madison senior design · solar autonomous boat',
+    body: `<p>A year-long senior design project for client Lennon Rogers: a solar-powered autonomous boat meant to log blue-green algae on local lakes and rivers. Two teams worked in parallel; mine built the boat and made it navigate.</p><p>I worked on firmware, SolidWorks design for the hull and parts, and LiDAR and GPS navigation using ROS and MOOS.</p>
+      ${fig(['boat_cad.jpg'], 'SolidWorks model of the boat.')}`,
+    video: yt('MRHQ8THos9s'),
+    tags: ['ROS', 'MOOS', 'SolidWorks', 'LiDAR', 'GPS'], links: [['Final report (PDF)', 'docs/BadgerBoatFinalReport.pdf']] },
+  { id: 'uvc', y: '2020', img: 'images/web/UVCMail2.jpg', t: 'UV-C Mail Cleaner', s: 'Presco Inc. · COVID-era disinfection device',
+    body: `<p>A prototype that pulls mail between two UV-C bulbs on two stepper-driven sets of flexible wheels, which take packages up to 0.5″ thick. You set the speed, trading throughput for exposure. An Arduino Nano runs the steppers and the bulb ballasts.</p>
+      ${fig(['UVCMail1.jpg'], 'The feed: two rows of flexible wheels, each row on its own stepper.')}
+      <p>The spec covers the UV-C side in more depth, including the exposure testing and calculations.</p>`,
     tags: ['SolidWorks', 'Arduino', 'Stepper motors'], links: [['Spec (PDF)', 'docs/Mail%20Cleaner%20V1.pdf']] },
-  { y: '2020–2021', img: 'images/web/cyclone.jpg', t: 'Project Cyclone', s: 'Co-founder · ML predictive maintenance UI',
-    body: `<p>I co-founded Cyclone and designed the UI for its ML model, which turns diesel-engine sensor data into maintenance schedules. I built the desktop app in Electron with the engineer who wrote the model. We won several startup competitions, raised $50K, and shipped a working MVP.</p>`,
+  { id: 'cyclone', y: '2020–2021', img: 'images/web/cyclone.jpg', t: 'Project Cyclone', s: 'Co-founder · ML predictive maintenance UI',
+    body: `<p>I co-founded Cyclone and designed the UI for its ML model, which turns diesel-engine sensor data into maintenance schedules. I built the desktop app in Electron with the engineer who wrote the model. We won several startup competitions, raised $50K, and shipped a working MVP.</p>
+      ${fig(['cyclone_screen.jpg'], 'The desktop app: device counts, machines needing attention, and per-machine health charts.')}`,
     tags: ['UI/UX', 'Electron', 'JavaScript', 'Illustrator'] },
-  { y: '2017–2018', img: 'images/web/tee.jpg', t: 'RoboTee', s: 'Presco Inc. · Randomizing robotic batting tee',
+  { id: 'robotee', y: '2017–2018', img: 'images/web/tee.jpg', t: 'RoboTee', s: 'Presco Inc. · Randomizing robotic batting tee',
     body: `<p>A baseball tee that changes height after every hit so batters can't groove one swing. RoboSport commissioned it from Presco. I wrote the Android app that sets the height range over Bluetooth LE, designed several of the main mechanical parts, and picked the boards that drive the stepper and talk Bluetooth.</p>`,
-    tags: ['Java', 'Android', 'Arduino', 'BLE'], links: [['Video', 'https://www.youtube.com/watch?v=su847c34yGw']] },
-  { y: '2012–2016', img: 'images/web/robot.jpg', t: 'i²robotics', s: 'Founder & captain · FTC team 6081',
-    body: `<p>I started the team in my basement freshman year. After a rough first season we made the World Championship three years running and placed second in the world my senior year. I did design, programming and drive team, and ran fundraising and outreach.</p>`,
-    tags: ['Java', 'CAD', 'Leadership'] },
-  { y: '2020–2021', img: 'images/web/MainAssemRenderBack.jpg', t: 'Reports and code', s: 'PDFs, repos and videos',
+    tags: ['Java', 'Android', 'Arduino', 'BLE'], video: yt('su847c34yGw') },
+  { id: 'i2r', y: '2012–2016', img: 'images/web/robot.jpg', t: 'i²robotics', s: 'Founder & captain · FTC team 6081',
+    body: `<p>I started the team in my basement freshman year. After a rough first season we made the World Championship three years running and placed second in the world my senior year. I did design, programming and drive team, and ran fundraising and outreach.</p>
+      ${fig(['i2-robotics-team.jpg'], 'The team.')}`,
+    tags: ['Java', 'Inventor', 'Laser cutting', 'Leadership'], links: [['Team YouTube', 'https://www.youtube.com/channel/UCIJYmga_sx5PnGkA-OP09_Q']] },
+  { id: 'archive', y: '2020–2021', img: 'images/web/MainAssemRenderBack.jpg', t: 'Reports and code', s: 'PDFs, repos and videos',
     body: `<p>Long-form write-ups and source for the projects above.</p>`, tags: [],
     links: [['BadgerBOAT final report', 'docs/BadgerBoatFinalReport.pdf'], ['BadgerBOAT midterm report', 'docs/BadgerBoatReport.pdf'], ['Mail Cleaner spec', 'docs/Mail%20Cleaner%20V1.pdf'], ['Wrench code', 'https://github.com/petercsauer/wrenchautomation'], ['ROS Controller code', 'https://github.com/petercsauer/ros_controller']] },
 ];
@@ -335,19 +376,24 @@ const page = [...document.body.children].filter(el => el !== root && el.tagName 
 let opener = null;
 function openDrawer(x) {
   opener = document.activeElement;
-  content.innerHTML = `<img src="${x.img}" alt=""><div class="inner">
+  content.innerHTML = `<img class="hero-img" src="${x.img}" alt=""><div class="inner">
     <div class="label">${x.org || x.s} · ${x.y}</div><h2 id="drawerTitle">${x.t}</h2><div class="body">${x.body}</div>
+    ${x.video ? `<div class="video"><iframe src="${x.video}" title="${x.t}: video" loading="lazy" allow="encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div>` : ''}
     <div class="tags">${x.tags.map(t => `<span>${t}</span>`).join('')}</div>
     ${x.links ? `<p class="links">${x.links.map(([label, url]) => `<a href="${url}" target="_blank" rel="noopener">${label} ↗</a>`).join('')}</p>` : ''}</div>`;
   drawer.scrollTop = 0;
   root.classList.add('open'); document.body.classList.add('locked');
   drawer.setAttribute('aria-hidden', 'false'); page.forEach(el => el.inert = true);
   document.getElementById('close').focus();
+  if (x.id) history.replaceState(null, '', '#' + x.id);
 }
 const closeDrawer = () => {
   if (!root.classList.contains('open')) return;
   root.classList.remove('open'); document.body.classList.remove('locked');
   drawer.setAttribute('aria-hidden', 'true'); page.forEach(el => el.inert = false);
+  history.replaceState(null, '', location.pathname + location.search);
+  // drop the content after the slide-out so embedded videos stop playing
+  setTimeout(() => { if (!root.classList.contains('open')) content.innerHTML = ''; }, 600);
   if (opener && opener.isConnected) opener.focus();
   opener = null;
 };
@@ -362,6 +408,10 @@ document.querySelectorAll('.row').forEach(r => bindOpen(r, MORE[r.dataset.m]));
 document.getElementById('scrim').onclick = closeDrawer;
 document.getElementById('close').onclick = closeDrawer;
 addEventListener('keydown', e => e.key === 'Escape' && closeDrawer());
+
+// deep links: /#wrench opens that project (old project pages redirect here)
+const fromHash = () => { const x = [...P, ...MORE].find(p => p.id && '#' + p.id === location.hash); if (x) openDrawer(x); };
+fromHash(); addEventListener('hashchange', fromHash);
 </script>
 </body>
 </html>
